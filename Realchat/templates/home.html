@@ -1,0 +1,100 @@
+<!-- home.html with colorful wallpaper & new animations -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 0 20px;
+  font-family: Arial, sans-serif;
+  /* Gradient wallpaper */
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  background-attachment: fixed;
+  animation: fadeInBody 1s ease-in;
+}
+@keyframes fadeInBody {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+  color: #333;
+  animation: bounceIn 1.2s ease;
+}
+@keyframes bounceIn {
+  0% {transform: scale(0.8); opacity: 0;}
+  50% {transform: scale(1.05); opacity: 1;}
+  100% {transform: scale(1);}
+}
+
+.container {
+  border: 2px solid #dedede;
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s forwards 0.5s;
+}
+@keyframes fadeUp {
+  to {opacity:1; transform:translateY(0);}
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: box-shadow 0.3s, transform 0.2s;
+}
+input[type=text]:focus {
+  box-shadow: 0 0 10px rgba(255,152,0,0.5);
+  transform: scale(1.02);
+}
+
+input[type=submit] {
+  width: 100%;
+  background: linear-gradient(90deg, #ff9800, #ff5722);
+  color: white;
+  padding: 14px 20px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+input[type=submit]:hover {
+  animation: pulse 0.8s infinite;
+}
+@keyframes pulse {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.05);}
+  100% {transform: scale(1);}
+}
+</style>
+</head>
+<body>
+<div align="center">
+  <h2>Real Chat</h2>
+</div>
+<div class="container">
+  <form id="post-form" method="POST" action="checkview">
+    {% csrf_token %}
+    <label>Room Name</label>
+    <input type="text" name="room_name" id="room_name" />
+    <label>Username</label>
+    <input type="text" name="username" id="username" />
+    <input type="submit" value="Enter Room">
+  </form>
+</div>
+</body>
+</html>
